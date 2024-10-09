@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'supertodo/custom.css' %}">
+  <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Quest Log</h1>
+        <div class="missions-grid">
+        {% for ToDoItem in tasks %}
+        
+            <div class="mission-card">
+                <div class="card-frame">
+                    <h2>{{ ToDoItem.task }}</h2>
+                    <p>{{ ToDoItem.details }}</p>
+                    <p class="due-date">Must do before: {{ ToDoItem.due_date }}</p>
+                    <a href="{% url 'supertodo:todo_detail' ToDoItem.slug %}" class="more-btn">Read More</a>
+                </div>
+            </div>
+        {% endfor %} 
+          </div>        
+    </div>
+
+</body>
+</html>
